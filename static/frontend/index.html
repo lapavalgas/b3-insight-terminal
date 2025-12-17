@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B3 Terminal | Market Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+  </head>
+  <body class="h-screen flex flex-col overflow-hidden">
+    <header
+      class="h-16 border-b border-gray-900 px-8 flex justify-between items-center bg-black z-10"
+    >
+      <div class="flex items-center gap-2">
+        <div class="w-3 h-3 bg-yellow-500 rounded-full animate-pulse"></div>
+        <h1 class="text-lg font-black tracking-tighter italic">
+          B3<span class="yellow-highlight">TERMINAL</span>_V3
+        </h1>
+      </div>
+      <div
+        class="flex gap-6 text-[10px] uppercase tracking-widest font-bold text-gray-500"
+      >
+        <span>Market Status: <span class="text-green-500">Open</span></span>
+        <span>Data Source: <span class="text-white">B3 COTAHIST</span></span>
+      </div>
+    </header>
+
+    <div class="flex flex-1 overflow-hidden">
+      <aside class="w-72 bg-[#050505] border-r border-gray-900 flex flex-col">
+        <div class="p-6">
+          <h3
+            class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-4"
+          >
+            Discovery
+          </h3>
+          <div class="relative">
+            <input
+              id="search-input"
+              type="text"
+              placeholder="Filtrar ativo..."
+              class="w-full bg-black border border-gray-800 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-yellow-500 transition-colors"
+            />
+          </div>
+        </div>
+        <ul
+          id="lista-ativos"
+          class="flex-1 overflow-y-auto overflow-x-hidden"
+        ></ul>
+      </aside>
+
+      <main class="flex-1 bg-black relative flex flex-col p-10">
+        <div
+          id="welcome-view"
+          class="absolute inset-0 flex flex-col items-center justify-center text-gray-800 pointer-events-none"
+        >
+          <svg
+            class="w-24 h-24 mb-6 opacity-20"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1"
+              d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+            ></path>
+          </svg>
+          <p class="text-sm font-medium tracking-widest uppercase">
+            Selecione um ativo para analisar
+          </p>
+        </div>
+
+        <div id="dashboard-view" class="hidden flex-1 flex flex-col">
+          <div class="flex justify-between items-start mb-10">
+            <div>
+              <div class="flex items-center gap-4 mb-2">
+                <h2
+                  id="active-ticker"
+                  class="text-8xl font-black yellow-highlight tracking-tighter leading-none"
+                >
+                  ---
+                </h2>
+              </div>
+
+              <div class="flex gap-2 mt-6">
+                <button
+                  onclick="updateDisplay('fechamento')"
+                  id="btn-fechamento"
+                  class="btn-toggle active px-5 py-2 rounded-lg text-[10px] uppercase font-bold"
+                >
+                  Preço Fechamento
+                </button>
+                <button
+                  onclick="updateDisplay('abertura')"
+                  id="btn-abertura"
+                  class="btn-toggle px-5 py-2 rounded-lg text-[10px] uppercase font-bold"
+                >
+                  Preço Abertura
+                </button>
+                <button
+                  onclick="updateDisplay('volume')"
+                  id="btn-volume"
+                  class="btn-toggle px-5 py-2 rounded-lg text-[10px] uppercase font-bold"
+                >
+                  Volume Negociado
+                </button>
+                <button
+                  onclick="resetZoom()"
+                  class="text-[10px] text-gray-500 hover:text-yellow-500 uppercase font-bold"
+                >
+                  Resetar Zoom
+                </button>
+              </div>
+            </div>
+
+            <button
+              id="btn-download"
+              class="btn-download px-8 py-4 rounded-2xl flex items-center gap-3 shadow-lg shadow-yellow-500/10"
+            >
+              <span class="text-xl">💾</span>
+              <div class="text-left">
+                <p class="text-[10px] uppercase opacity-70 leading-none">
+                  Exportar dados
+                </p>
+                <p class="text-sm">SALVAR COMO PNG</p>
+              </div>
+            </button>
+          </div>
+
+          <div
+            class="flex-1 bg-neutral-900/20 border border-gray-900 rounded-[2.5rem] p-10 backdrop-blur-sm"
+          >
+            <div class="canvas-container">
+              <canvas id="mainChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

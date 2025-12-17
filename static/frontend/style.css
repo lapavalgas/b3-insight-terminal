@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=JetBrains+Mono&display=swap');
+        
+        body { 
+            background-color: #000; 
+            color: #fff; 
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .yellow-highlight { color: #facc15; }
+        .bg-yellow-glow { background: rgba(250, 204, 21, 0.1); }
+        
+        .btn-toggle { 
+            border: 1px solid #222; 
+            color: #666; 
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .btn-toggle:hover { border-color: #444; color: #aaa; }
+        
+        .btn-toggle.active { 
+            border-color: #facc15; 
+            color: #facc15; 
+            background: rgba(250, 204, 21, 0.1);
+            box-shadow: 0 0 15px rgba(250, 204, 21, 0.1);
+        }
+        
+        .btn-download { 
+            background-color: #facc15; 
+            color: #000; 
+            font-weight: 800;
+            transition: transform 0.2s;
+        }
+        
+        .btn-download:hover { 
+            transform: translateY(-2px);
+            background-color: #eab308;
+        }
+
+        .sidebar-item {
+            border-bottom: 1px solid #111;
+            transition: all 0.2s;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .sidebar-item:hover {
+            background-color: #0a0a0a;
+            color: #facc15;
+            padding-left: 2rem;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #facc15; }
+
+
+        /* style.css */
+.canvas-container {
+    position: relative;
+    height: 400px; /* Ou a altura que preferir */
+    width: 100%;
+}
