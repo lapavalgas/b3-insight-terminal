@@ -70,8 +70,12 @@ def test_chart_config_allowed_types():
     assert "cripto_meme" not in ChartConfig.ALLOWED_TYPES
 
 def test_required_columns_integrity():
-    """Garante que as colunas essenciais para o gráfico e ETL estão presentes."""
-    from core.constants import B3Layout
-    essenciais = ["ticker", "fechamento", "data_pregao"]
-    for col in essenciais:
-        assert col in B3Layout.REQUIRED_COLUMNS
+    """Garante que o Layout da B3 provê todas as colunas que o sistema exige."""
+    from core.constants import B3Layout, MarketConstants
+    
+    # O que o sistema pede vs O que o arquivo bruto entrega
+    colunas_fornecidas = B3Layout.LAYOUT["names"]
+    colunas_exigidas = MarketConstants.REQUIRED_COLUMNS
+    
+    for col in colunas_exigidas:
+        assert col in colunas_fornecidas, f"A coluna obrigatória '{col}' não está no layout da B3!"
