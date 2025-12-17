@@ -1,0 +1,16 @@
+# --- Servidor Web e API ---
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.7
+
+# --- Manipulação de Dados e Banco ---
+pandas==2.2.0
+numpy==1.26.3
+sqlalchemy==2.0.25
+python-dotenv==1.0.1
+
+# --- Visualização e Gráficos ---
+matplotlib==3.8.2
+
+# --- Utilitários ---
+watchfiles==0.21.0

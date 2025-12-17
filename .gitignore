@@ -1,0 +1,42 @@
+# --- Python / Ambiente Virtual ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.env
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --- Banco de Dados e Dados Locais ---
+# Ignora o banco de dados real para evitar sobrescrever dados de outros devs
+*.db
+*.sqlite3
+# Ignora os arquivos brutos da B3 (geralmente muito pesados)
+*.TXT
+*.txt
+# Caso tenha uma pasta específica para dados brutos
+data/raw/
+
+# --- Logs e Gráficos Gerados ---
+*.log
+static/charts/*.png
+static/charts/*.jpg
+
+# --- Editor / IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# --- Node / Tailwind (Se estiver usando localmente) ---
+node_modules/
+.eslintcache
+
+# --- Testes ---
+.pytest_cache/
+test-reports/
